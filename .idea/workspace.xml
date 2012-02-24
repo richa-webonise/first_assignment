@@ -26,7 +26,7 @@
       <file leaf-file-name="popup.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html_files/popup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="4" selection-start="800" selection-end="800" vertical-scroll-proportion="0.44642857">
+            <state line="8" column="41" selection-start="489" selection-end="489" vertical-scroll-proportion="0.1854714">
               <folding />
             </state>
           </provider>
@@ -139,9 +139,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="y" value="48" />
     <option name="width" value="1600" />
-    <option name="height" value="876" />
+    <option name="height" value="851" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -231,7 +231,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1600" height="876" extended-state="6" />
+    <frame x="0" y="48" width="1600" height="851" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -394,7 +394,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html_files/popup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="4" selection-start="800" selection-end="800" vertical-scroll-proportion="0.44642857">
+        <state line="8" column="41" selection-start="489" selection-end="489" vertical-scroll-proportion="0.1854714">
           <folding />
         </state>
       </provider>
