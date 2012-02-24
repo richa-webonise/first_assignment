@@ -1,7 +1,9 @@
 
 import java.awt.Button;
 import java.awt.event.KeyEvent;
+import javax.swing.text.View;
 import javax.swing.text.html.ImageView;
+import sun.rmi.runtime.Log;
 
 public class raja_mantri_chor_sipahi extends Activity {
 
@@ -163,7 +165,7 @@ public class raja_mantri_chor_sipahi extends Activity {
 		// Create the ad_view
 		AdView ad_view = new AdView(RajaMantri.this, AdSize.BANNER, "a14e156523d01de");
 		// Lookup your LinearLayout assuming it’s been given
-		// the attribute android:id="@+id/mainLayout"
+	        // the attribute android:id="@+id/mainLayout"
 		LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayoutHelp);
 		// Add the ad_view to it
 		layout.addView(ad_view);
@@ -182,8 +184,8 @@ public class raja_mantri_chor_sipahi extends Activity {
 		});
             }
 	});
-        btnRajaMantri = (Button) findViewById(R.id.btnRajaMantri);
-        btnRajaMantri.setOnClickListener(new OnClickListener() {
+        raja_mantri_button = (Button) findViewById(R.id.raja_mantri_button);
+        raja_mantri_button.setOnClickListener(new OnClickListener() {
  	    public void onClick(View v) {
                 setContentView(R.layout.rmcsp);
  		// Create the ad_view
@@ -196,24 +198,24 @@ public class raja_mantri_chor_sipahi extends Activity {
 	        // Initiate a generic request to load it with an ad
 	        ad_view.loadAd(new AdRequest());
 
-                editTxtPlayer1 = (EditText) findViewById(R.id.editTxtPlayer1);
- 		editTxtPlayer2 = (EditText)findViewById(R.id.editTxtPlayer2);
- 		editTxtPlayer3 = (EditText)findViewById(R.id.editTxtPlayer3);
- 		editTxtPlayer4 = (EditText)findViewById(R.id.editTxtPlayer4);
+                player1_edit_text = (EditText) findViewById(R.id.player1_edit_text);
+ 		player2_edit_text = (EditText)findViewById(R.id.player2_edit_text);
+ 		player3_edit_text = (EditText)findViewById(R.id.player3_edit_text);
+ 		player4_edit_text = (EditText)findViewById(R.id.player4_edit_text);
 
- 		lblPlayer1 = (TextView) findViewById(R.id.lblPlayer1);
- 		lblPlayer2 = (TextView) findViewById(R.id.lblPlayer2);
- 		lblPlayer3 = (TextView) findViewById(R.id.lblPlayer3);
- 		lblPlayer4 = (TextView) findViewById(R.id.lblPlayer4);
+ 		player1_label = (TextView) findViewById(R.id.player1_label);
+ 		player2_label = (TextView) findViewById(R.id.player2_label);
+ 		player3_label = (TextView) findViewById(R.id.player3_label);
+ 		player4_label = (TextView) findViewById(R.id.player4_label);
 
  		Display display = getWindowManager().getDefaultDisplay(); 
  		int width = display.getWidth();
  		int height = display.getHeight();
 
- 		lblPlayer1.setGravity(Gravity.CENTER_HORIZONTAL);
- 		lblPlayer2.setGravity(Gravity.CENTER_HORIZONTAL);
- 		lblPlayer3.setGravity(Gravity.CENTER_HORIZONTAL);
- 		lblPlayer4.setGravity(Gravity.CENTER_HORIZONTAL);
+ 		player1_label.setGravity(Gravity.CENTER_HORIZONTAL);
+ 		player2_label.setGravity(Gravity.CENTER_HORIZONTAL);
+ 		player3_label.setGravity(Gravity.CENTER_HORIZONTAL);
+ 		player4_label.setGravity(Gravity.CENTER_HORIZONTAL);
 
  		Log.v("AkandBakar", "Playernames:" + player1_name);
  		Log.v("AkandBakar", "Playernames:" + player2_name);
@@ -230,14 +232,14 @@ public class raja_mantri_chor_sipahi extends Activity {
 			}
 		});
 
- 		btnSignin = (Button) findViewById(R.id.btnsignin);
- 		btnSignin.setOnClickListener(new OnClickListener() {
+ 		sign_in_button = (Button) findViewById(R.id.btnsignin);
+ 		sign_in_button.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				player1_name = editTxtPlayer1.getText().toString();
-		 		player2_name = editTxtPlayer2.getText().toString();
-		 		player3_name = editTxtPlayer3.getText().toString();
-		 		player4_name = editTxtPlayer4.getText().toString();
+				player1_name = player1_edit_text.getText().toString();
+		 		player2_name = player2_edit_text.getText().toString();
+		 		player3_name = player3_edit_text.getText().toString();
+		 		player4_name = player4_edit_text.getText().toString();
 
 				if(player1_name.equals("")||player2_name.equals("")||player3_name.equals("")||player4_name.equals("")){
 
@@ -256,8 +258,8 @@ public class raja_mantri_chor_sipahi extends Activity {
 				    // Initiate a generic request to load it with an ad
 				    ad_view.loadAd(new AdRequest());
 
-					txtTurn = (TextView)findViewById(R.id.txtTurn);
-					txtTurn.setText("Click on SHUFFLE!");
+					turn_text = (TextView)findViewById(R.id.turn_text);
+					turn_text.setText("Click on SHUFFLE!");
 					playersArray[0] = player1_name;
 			 		playersArray[1] = player2_name;
 			 		playersArray[2] = player3_name;
@@ -275,13 +277,13 @@ public class raja_mantri_chor_sipahi extends Activity {
 					txtPlayer4 = (TextView) findViewById(R.id.txtPlayer4);
 					txtPlayer4.setText("4."+player4_name+ " [" + p4score + "]");
 
-				btnPlay = (Button) findViewById(R.id.btnPlay);
+				play_button = (Button) findViewById(R.id.play_button);
 
-				btnPlay.setOnClickListener(new OnClickListener() {
+				play_button.setOnClickListener(new OnClickListener() {
 
 		 			public void onClick(View v) {
 
-		 				if(btnPlay.getText().equals("SHUFFLE")){
+		 				if(play_button.getText().equals("SHUFFLE")){
 		 					RajaMantri.this.shuffle();
 		 				}else{
 		 					RajaMantri.this.makeGuess();
@@ -310,9 +312,9 @@ public class raja_mantri_chor_sipahi extends Activity {
     
     public void makeGuess(){
     	
-    	btnPlay.setText("SHUFFLE");
+    	play_button.setText("SHUFFLE");
 			count = 0;
-			btnPlay.setText("SHUFFLE");
+			play_button.setText("SHUFFLE");
 			
 			btnPod1.setClickable(true);
 			btnPod2.setClickable(true);
@@ -324,7 +326,7 @@ public class raja_mantri_chor_sipahi extends Activity {
 			btnPod1.setText("RAJA");
 			btnPod1.setBackgroundResource(R.drawable.podopen);
 			btnPod1.setClickable(false);
-		}/home/webonise/Richa/training_assignments/gallery_2_live_nisha
+		}
 		if(player2.equals("RAJA")){
 			
 			btnPod2.setText("RAJA");
@@ -371,16 +373,16 @@ public class raja_mantri_chor_sipahi extends Activity {
 		}
 		
 		if(player1_role.equals("MANTRI")){
-			txtTurn.setText(player1_name + " will find the CHOR!");
+			turn_text.setText(player1_name + " will find the CHOR!");
 		}
 		if(player2_role.equals("MANTRI")){
-			txtTurn.setText(player2_name + " will find the CHOR!");
+			turn_text.setText(player2_name + " will find the CHOR!");
 		}
 		if(player3_role.equals("MANTRI")){
-			txtTurn.setText(player3_name + " will find the CHOR!");
+			turn_text.setText(player3_name + " will find the CHOR!");
 		}
 		if(player4_role.equals("MANTRI")){
-			txtTurn.setText(player4_name + " will find the CHOR!");
+			turn_text.setText(player4_name + " will find the CHOR!");
 		}
 		
 		Log.v("AkhandBakar","#########" + btnPod1.getText());
@@ -510,11 +512,11 @@ public class raja_mantri_chor_sipahi extends Activity {
     
     public void shuffle(){
     	
-    	btnPlay.setText("Guess");
-			btnPlay.setClickable(false);
+    	play_button.setText("Guess");
+			play_button.setClickable(false);
 			shuffleArray(solutionArray);
-			txtTurn.setText(player1_name + "'s" + " turn!");
-			nextTurn = player2_name;
+			turn_text.setText(player1_name + "'s" + " turn!");
+			next_turn = player2_name;
 			btnPod1 = (Button)findViewById(R.id.btnPod1);
 			btnPod1.setBackgroundResource(R.drawable.podtlclosed);
 			btnPod1.setOnClickListener(new OnClickListener() {
@@ -527,7 +529,7 @@ public class raja_mantri_chor_sipahi extends Activity {
 					btnPod2.setClickable(false);
 					btnPod3.setClickable(false);
 					btnPod4.setClickable(false);
-					if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+					if(turn_text.getText().equals(player1_name + "'s" + " turn!")){
 						
 						if(player1.equals("MANTRI")){
 							
@@ -547,10 +549,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 						}
 				    	
 
-						nextTurn = player2_name + "'s" + " turn!";
+						next_turn = player2_name + "'s" + " turn!";
 						
 					}
-					if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+					if(turn_text.getText().equals(player2_name + "'s" + " turn!")){
 						
 						if(player1.equals("MANTRI")){
 							
@@ -569,10 +571,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 							player2_role = "CHOR";
 						}
 				    	
-						nextTurn = player3_name + "'s" + " turn!";
+						next_turn = player3_name + "'s" + " turn!";
 						
 					}
-					if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
+					if(turn_text.getText().equals(player3_name + "'s" + " turn!")){
 						
 						if(player1.equals("MANTRI")){
 							
@@ -591,11 +593,11 @@ public class raja_mantri_chor_sipahi extends Activity {
 							player3_role = "CHOR";
 						}
 				    	
-						nextTurn = player4_name + "'s" + " turn!";
+						next_turn = player4_name + "'s" + " turn!";
 						
 					}
 					
-					if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
+					if(turn_text.getText().equals(player4_name + "'s" + " turn!")){
 						
 						if(player1.equals("MANTRI")){
 							
@@ -615,11 +617,11 @@ public class raja_mantri_chor_sipahi extends Activity {
 						}
 				    	
 						
-						nextTurn = "Click on Guess!";
+						next_turn = "Click on Guess!";
 						
 					}
 					
-					txtTurn.setText("Click again to close the chit!");
+					turn_text.setText("Click again to close the chit!");
 				
 					
 					
@@ -631,14 +633,14 @@ public class raja_mantri_chor_sipahi extends Activity {
 							count++;
 							btnPod1.setText("");
 							btnPod1.setBackgroundResource(R.drawable.podtlhalf);
-							txtTurn.setText(nextTurn);
+							turn_text.setText(next_turn);
 							btnPod2.setClickable(true);
 							btnPod3.setClickable(true);
 							btnPod4.setClickable(true);
 							if(count == 4){
 								
-								txtTurn.setText("Click on Guess!");
-								btnPlay.setClickable(true);
+								turn_text.setText("Click on Guess!");
+								play_button.setClickable(true);
 								count = 0;
 								
 							}
@@ -659,7 +661,7 @@ public class raja_mantri_chor_sipahi extends Activity {
 						btnPod1.setClickable(false);
 						btnPod3.setClickable(false);
 						btnPod4.setClickable(false);
-						if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player1_name + "'s" + " turn!")){
 							
 							if(player2.equals("MANTRI")){
 								
@@ -678,10 +680,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								player1_role = "CHOR";
 							}
 					    	
-							nextTurn = player2_name+ "'s" + " turn!";
+							next_turn = player2_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player2_name + "'s" + " turn!")){
 							
 							if(player2.equals("MANTRI")){
 								
@@ -700,10 +702,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								player2_role = "CHOR";
 							}
 					    	
-							nextTurn = player3_name+ "'s" + " turn!";
+							next_turn = player3_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player3_name + "'s" + " turn!")){
 							
 							if(player2.equals("MANTRI")){
 								
@@ -722,10 +724,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								player3_role = "CHOR";
 							}
 					    	
-							nextTurn = player4_name+ "'s" + " turn!";
+							next_turn = player4_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player4_name + "'s" + " turn!")){
 							
 							if(player2.equals("MANTRI")){
 								
@@ -744,10 +746,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								player4_role = "CHOR";
 							}
 					    	
-							nextTurn = "Click on Guess!";
+							next_turn = "Click on Guess!";
 							
 						}
-						txtTurn.setText("Click again to close the chit!");
+						turn_text.setText("Click again to close the chit!");
 						btnPod2.setOnClickListener(new OnClickListener() {
 							
 							public void onClick(View v) {
@@ -756,14 +758,14 @@ public class raja_mantri_chor_sipahi extends Activity {
 								count++;
 								btnPod2.setText("");
 								btnPod2.setBackgroundResource(R.drawable.podtrhalf);
-								txtTurn.setText(nextTurn);
+								turn_text.setText(next_turn);
 								btnPod1.setClickable(true);
 								btnPod3.setClickable(true);
 								btnPod4.setClickable(true);
 								if(count == 4){
 									
-									txtTurn.setText("Click on Guess!");
-									btnPlay.setClickable(true);
+									turn_text.setText("Click on Guess!");
+									play_button.setClickable(true);
 									count = 0;
 									
 								}
@@ -786,7 +788,7 @@ public class raja_mantri_chor_sipahi extends Activity {
 						btnPod2.setClickable(false);
 						btnPod1.setClickable(false);
 						btnPod4.setClickable(false);
-						if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player1_name + "'s" + " turn!")){
 							
 							if(player3.equals("MANTRI")){
 								
@@ -805,10 +807,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								player1_role = "CHOR";
 							}
 					    	
-							nextTurn = player2_name+ "'s" + " turn!";
+							next_turn = player2_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player2_name + "'s" + " turn!")){
 							
 							if(player3.equals("MANTRI")){
 								
@@ -827,10 +829,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								player2_role = "CHOR";
 							}
 					    	
-							nextTurn = player3_name+ "'s" + " turn!";
+							next_turn = player3_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player3_name + "'s" + " turn!")){
 							
 							if(player3.equals("MANTRI")){
 								
@@ -848,10 +850,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								
 								player3_role = "CHOR";
 							}
-							nextTurn = player4_name+ "'s" + " turn!";
+							next_turn = player4_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player4_name + "'s" + " turn!")){
 							
 							if(player3.equals("MANTRI")){
 								
@@ -869,11 +871,11 @@ public class raja_mantri_chor_sipahi extends Activity {
 								
 								player4_role = "CHOR";
 							}
-							nextTurn = "Click on Guess!";
+							next_turn = "Click on Guess!";
 							
 						}
 
-						txtTurn.setText("Click again to close the chit!");
+						turn_text.setText("Click again to close the chit!");
 						btnPod3.setOnClickListener(new OnClickListener() {
 							
 							public void onClick(View v) {
@@ -882,14 +884,14 @@ public class raja_mantri_chor_sipahi extends Activity {
 								count++;
 								btnPod3.setText("");
 								btnPod3.setBackgroundResource(R.drawable.podblhalf);
-								txtTurn.setText(nextTurn);
+								turn_text.setText(next_turn);
 								btnPod2.setClickable(true);
 								btnPod1.setClickable(true);
 								btnPod4.setClickable(true);
 								if(count == 4){
 									
-									txtTurn.setText("Click on Guess!");
-									btnPlay.setClickable(true);
+									turn_text.setText("Click on Guess!");
+									play_button.setClickable(true);
 									count = 0;
 									
 								}
@@ -916,7 +918,7 @@ public class raja_mantri_chor_sipahi extends Activity {
 						btnPod2.setClickable(false);
 						btnPod3.setClickable(false);
 						btnPod1.setClickable(false);
-						if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player1_name + "'s" + " turn!")){
 							
 							if(player4.equals("MANTRI")){
 								
@@ -934,10 +936,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								
 								player1_role = "CHOR";
 							}
-							nextTurn = player2_name+ "'s" + " turn!";
+							next_turn = player2_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player2_name + "'s" + " turn!")){
 							
 							if(player4.equals("MANTRI")){
 								
@@ -955,10 +957,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								
 								player2_role = "CHOR";
 							}
-							nextTurn = player3_name+ "'s" + " turn!";
+							next_turn = player3_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player3_name + "'s" + " turn!")){
 							
 							if(player4.equals("MANTRI")){
 								
@@ -976,10 +978,10 @@ public class raja_mantri_chor_sipahi extends Activity {
 								
 								player3_role = "CHOR";
 							}
-							nextTurn = player4_name+ "'s" + " turn!";
+							next_turn = player4_name+ "'s" + " turn!";
 							
 						}
-						if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
+						if(turn_text.getText().equals(player4_name + "'s" + " turn!")){
 							
 							if(player4.equals("MANTRI")){
 								
@@ -997,11 +999,11 @@ public class raja_mantri_chor_sipahi extends Activity {
 								
 								player4_role = "CHOR";
 							}
-							nextTurn = "Click on Guess!";
+							next_turn = "Click on Guess!";
 							
 						}
 						
-						txtTurn.setText("Click again to close the chit!");
+						turn_text.setText("Click again to close the chit!");
 						btnPod4.setOnClickListener(new OnClickListener() {
 							
 							public void onClick(View v) {
@@ -1010,14 +1012,14 @@ public class raja_mantri_chor_sipahi extends Activity {
 								count++;
 								btnPod4.setText("");
 								btnPod4.setBackgroundResource(R.drawable.podbrhalf);
-								txtTurn.setText(nextTurn);
+								turn_text.setText(next_turn);
 								btnPod2.setClickable(true);
 								btnPod3.setClickable(true);
 								btnPod1.setClickable(true);
 								if(count == 4){
 									
-									txtTurn.setText(nextTurn);
-									btnPlay.setClickable(true);
+									turn_text.setText(next_turn);
+									play_button.setClickable(true);
 									count = 0;
 									
 								}
@@ -1079,7 +1081,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		{
     		i = i+80;
     		p1score=i;
-    		txtTurn.setText(player1_name+" is right!");
+    		turn_text.setText(player1_name+" is right!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1149,7 +1151,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		{
     		i=i-80;
     		p1score = i;
-    		txtTurn.setText(player1_name+" is wrong!");
+    		turn_text.setText(player1_name+" is wrong!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1225,7 +1227,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		Log.v("AkhandBakar", "##########Mantri"+ player2_name);
     		j = j+80;
     		p2score=j;
-    		txtTurn.setText(player2_name+" is right!");
+    		turn_text.setText(player2_name+" is right!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1307,7 +1309,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		 
     		j=j-80;
     		p2score = j;
-    		txtTurn.setText(player2_name+" is wrong!");
+    		turn_text.setText(player2_name+" is wrong!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1394,7 +1396,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		{
     		k = k+80;
     		p3score = k;
-    		txtTurn.setText(player3_name+" is right!");
+    		turn_text.setText(player3_name+" is right!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1477,7 +1479,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		{
     		k = k-80;
     		p3score = k;
-    		txtTurn.setText(player3_name+" is wrong!");
+    		turn_text.setText(player3_name+" is wrong!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1566,7 +1568,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		{
     		l = l+80;
     		p4score=l;
-    		txtTurn.setText(player4_name+" is right!");
+    		turn_text.setText(player4_name+" is right!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
@@ -1645,7 +1647,7 @@ public class raja_mantri_chor_sipahi extends Activity {
     		{
     		l = l-80;
     		p4score = l;
-    		txtTurn.setText(player4_name+" is wrong!");
+    		turn_text.setText(player4_name+" is wrong!");
     		btnPod1.setText(player1);
 			btnPod2.setText(player2);
 			btnPod3.setText(player3);
